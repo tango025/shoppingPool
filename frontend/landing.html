@@ -18,11 +18,13 @@
             <div class="col-4">
             <div id = "box1" class=" is-loading">
                 <div id="box">
-                    <div class="heading">LOGIN</div>
+                    <div class="heading">LOGIN | SIGNIN</div>
                     <form action="" id="login">
-                        <input type="tel" placeholder="Phone Number">
-                        <input type="password" placeholder="Password">
-                        <button type="submit">Submit</button>
+                        <input type="text"  class = "entry" placeholder="name(**for signin only) " id="name">
+                        <input type="text" class = "entry" placeholder="Email" id="email" name="email">
+                        <input type="password" class = "entry" placeholder="Password" id="pass">
+                        <input type="button" onclick="whenclicked()" value="Submit">
+
                     </form>
 
                 </div>
@@ -35,6 +37,8 @@
 
 </body>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+<script src="auth.js"></script>
 <script src="landing.js"></script>  
 
 

@@ -6,32 +6,32 @@ $(document).ready(function () {
     }, 100)
 });
 var inn = 0;
-function whenclicked(){
+function whenclicked() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
     var password = document.getElementById('pass').value;
 
-    if(name == "")   
-        e_login(email,password);
-    else    
-        e_signIn(name,email,password);
-    document.getElementById("name").value= "";
-    document.getElementById("email").value ="";
-    document.getElementById('pass').value= "";    
+    if (name == "")
+        e_login(email, password);
+    else
+        e_signIn(name, email, password);
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById('pass').value = "";
 }
 
 
 
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
-        console.log(user.uid);
-        //window.location.href = user.uid;
+        //console.log(user.uid);
+        window.location.href = user.uid;
     } else {
         console.log("not signed in")
     }
 });
 
-function e_login(email,password) {
+function e_login(email, password) {
     inn = 1;
     console.log("old user");
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -40,15 +40,15 @@ function e_login(email,password) {
         });
 }
 
-function e_signIn(name,email,password) {
+function e_signIn(name, email, password) {
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((data) => {
-            firebase.database().ref('sellers/' + data.user.uid).set({
+            firebase.database().ref('sellers/sellers-list/' + data.user.uid).set({
                 name: name,
                 email: email
             })
-            console.log("new user");
-            //window.location.href = data.user.uid;
+            //console.log("new user");
+            window.location.href = data.user.uid;
         })
         .catch((error) => {
             alert(error.message);
