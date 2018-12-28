@@ -41,6 +41,7 @@
     transition-property:all;
     transition-duration: 350ms;
 }
+
 .vertical ul li:hover{
     background: white;
     color: #27a68f;
@@ -49,5 +50,3 @@
     font-weight: bold;
     text-align: right;
 }
-/* <% firebase.database().ref("sellers/sellers-list/"+id ).on('value',function(snap){%>
-<% console.log(snap.val());})%> */

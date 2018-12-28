@@ -5,7 +5,6 @@ $(document).ready(function () {
 
     }, 100)
 });
-var inn = 0;
 function whenclicked() {
     var name = document.getElementById("name").value;
     var email = document.getElementById("email").value;
@@ -25,6 +24,7 @@ function whenclicked() {
 firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         //console.log(user.uid);
+        console.log("hello");
         window.location.href = user.uid;
     } else {
         console.log("not signed in")
@@ -32,7 +32,6 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function e_login(email, password) {
-    inn = 1;
     console.log("old user");
     firebase.auth().signInWithEmailAndPassword(email, password)
         .catch(function (error) {
