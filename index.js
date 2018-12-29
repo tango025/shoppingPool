@@ -31,10 +31,13 @@ app.get("/:id",(req,res)=>{
     res.render('temp', { seller: seller });
 })   
 });
-
+// product routes
 app.get("/:id/products", (req, res) => { 
     res.render("products", { seller: seller });
 });
+app.get("/:id/products/new",(req,res) =>{
+    res.render("new_prod",{seller:seller});
+})
 
 app.get("/:id/sales", (req, res) => {
     res.render("sales", { seller: seller });
