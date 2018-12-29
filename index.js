@@ -9,7 +9,7 @@ firebase.initializeApp(config);
 app.use(express.static("static_files"));
 app.use(express.static('views'));
 app.set('view engine','ejs');
-var seller;
+var seller,id,products;
 
 //landing/login/signup
 
@@ -22,7 +22,7 @@ app.get('/favicon.ico', (req, res) => res.status(204));
 // Main seller routes
 
 app.get("/:id",(req,res)=>{
-    var id = req.params.id;
+     id = req.params.id;
     console.log(req.params.id);
     firebase.database().ref("sellers/sellers-list/"+id ).on('value',function(snap){
          seller = snap.val();
@@ -33,10 +33,15 @@ app.get("/:id",(req,res)=>{
 });
 // product routes
 app.get("/:id/products", (req, res) => { 
-    res.render("products", { seller: seller });
+    firebase.database().ref("sellers/seller_wise/"+id).on('value',function(snap){
+        products = snap.val();
+        res.render("products", { seller: seller, products: products});
 });
 app.get("/:id/products/new",(req,res) =>{
-    res.render("new_prod",{seller:seller});
+    ;
+        res.render("new_prod", { seller: seller});
+    })
+    
 })
 
 app.get("/:id/sales", (req, res) => {
