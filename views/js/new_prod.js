@@ -28,7 +28,7 @@ function add_product(){
             avl_sizes: size,
             avl_qty: qty,
             prices: prices,
-            imageUrl: url
+            url: url
         }
         var seller_info = {
             gender: gender,
